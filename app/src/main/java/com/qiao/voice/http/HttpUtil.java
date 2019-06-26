@@ -18,7 +18,7 @@ import okhttp3.Response;
 
 public class HttpUtil {
     private OkHttpClient okHttpClient;
-    private ExecutorService executors = Executors.newScheduledThreadPool(5);
+    public ExecutorService executors = Executors.newScheduledThreadPool(5);
     private mainApi mainApi;
     public HttpUtil (mainApi mainApi){
         this.mainApi = mainApi;

@@ -7,6 +7,7 @@ import com.baidu.ocr.sdk.OCR;
 import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
+import com.tencent.bugly.crashreport.CrashReport;
 
 public class MyApplication extends Application {
 
@@ -16,6 +17,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         //initOcr();
+        CrashReport.initCrashReport(getApplicationContext(), "9172eef340", false);
     }
 
     /**
