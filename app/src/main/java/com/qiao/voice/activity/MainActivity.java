@@ -52,7 +52,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements mainApi {
+public class MainActivity extends BaseActivity implements mainApi {
 
     public final int REQUEST_CODE_ACCURATE_BASIC = 100;
 
@@ -77,8 +77,6 @@ public class MainActivity extends AppCompatActivity implements mainApi {
     }
 
     public void initView() {
-        StatusBarUtil.setColor(this, 0x00ffffff, 0);
-        StatusBarUtil.setDarkMode(this);
         BarUtil.setViewHeight(this, binding.headTitleLayout.headView);
         httpUtil = new HttpUtil(this);
         requestPermission();

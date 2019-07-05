@@ -19,7 +19,7 @@ public class TopMenu {
         menuItems.add(new MenuItem(R.mipmap.icon_edit, "编辑"));
         menuItems.add(new MenuItem(R.mipmap.icon_phone, "拍照"));
         topRightMenu
-                .setHeight(200)     //默认高度480
+                .setHeight(300)     //默认高度480
                 //.setWidth(240)      //默认宽度wrap_content
                 .showIcon(true)     //显示菜单图标，默认为true
                 .dimBackground(true)        //背景变暗，默认为true
@@ -43,7 +43,7 @@ public class TopMenu {
                     }
                 })
                 //.showAsDropDown(view, -225, 0);	//带偏移量
-      		.showAsDropDown(view, -95, 0);
+      		.showAsDropDown(view, -162, 22);
     }
 
     public interface ItemClickListener{
