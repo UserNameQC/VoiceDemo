@@ -6,6 +6,7 @@ package com.baidu.ocr.ui.camera;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 
 import com.baidu.idcardquality.IDcardQualityProcess;
 import com.baidu.ocr.ui.R;
@@ -47,6 +48,8 @@ public class CameraActivity extends Activity {
     public static final String CONTENT_TYPE_BANK_CARD = "bankCard";
     public static final String CONTENT_TYPE_PASSPORT = "passport";
 
+    public static final String CONTENT_TYPE_URI = "URI";
+
     private static final int REQUEST_CODE_PICK_IMAGE = 100;
     private static final int PERMISSIONS_REQUEST_CAMERA = 800;
     private static final int PERMISSIONS_EXTERNAL_STORAGE = 801;
@@ -68,6 +71,7 @@ public class CameraActivity extends Activity {
     private FrameOverlayView overlayView;
     private MaskView cropMaskView;
     private ImageView takePhotoBtn;
+    private String outputPath;
     private PermissionCallback permissionCallback = new PermissionCallback() {
         @Override
         public boolean onRequestPermission() {
@@ -112,6 +116,8 @@ public class CameraActivity extends Activity {
         setOrientation(getResources().getConfiguration());
         initParams();
 
+        initCropView();
+
         cameraView.setAutoPictureCallback(autoTakePictureCallback);
     }
 
@@ -139,8 +145,16 @@ public class CameraActivity extends Activity {
         cameraView.start();
     }
 
+    public void initCropView(){
+        Uri uri = (Uri) Objects.requireNonNull(getIntent().getExtras()).get(CameraActivity.CONTENT_TYPE_URI);
+        if (uri != null) {
+            cropView.setFilePath(getRealPathFromURI(uri));
+            showCrop();
+        }
+    }
+
     private void initParams() {
-        String outputPath = getIntent().getStringExtra(KEY_OUTPUT_FILE_PATH);
+        outputPath = getIntent().getStringExtra(KEY_OUTPUT_FILE_PATH);
         final String token = getIntent().getStringExtra(KEY_NATIVE_TOKEN);
         isNativeEnable = getIntent().getBooleanExtra(KEY_NATIVE_ENABLE, true);
         isNativeManual = getIntent().getBooleanExtra(KEY_NATIVE_MANUAL, false);

@@ -18,6 +18,9 @@ public class TopMenu {
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem(R.mipmap.icon_edit, "编辑"));
         menuItems.add(new MenuItem(R.mipmap.icon_phone, "拍照"));
+        menuItems.add(new MenuItem(R.mipmap.icon_edit, "截图"));
+        menuItems.add(new MenuItem(R.mipmap.icon_phone, "音频"));
+        menuItems.add(new MenuItem(R.mipmap.icon_edit, "书签"));
         topRightMenu
                 .setHeight(300)     //默认高度480
                 //.setWidth(240)      //默认宽度wrap_content
@@ -38,6 +41,15 @@ public class TopMenu {
                                 case 1:
                                     itemClickListener.takePhotos();
                                     break;
+                                case 2:
+                                    itemClickListener.shot();
+                                    break;
+                                case 3:
+                                    itemClickListener.mp3();
+                                    break;
+                                case 4:
+                                    itemClickListener.saved();
+                                    break;
                             }
                         }
                     }
@@ -49,6 +61,9 @@ public class TopMenu {
     public interface ItemClickListener{
         void takePhotos();
         void edit();
+        void shot();
+        void mp3();
+        void saved();
     }
     private static ItemClickListener itemClickListener;
     public static void setItemListener(ItemClickListener itemListener){

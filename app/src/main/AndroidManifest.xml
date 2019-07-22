@@ -25,7 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.AgmentWebActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +40,7 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.AgmentWebActivity" />
     </application>
 
 </manifest>

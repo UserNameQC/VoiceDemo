@@ -28,7 +28,7 @@ public class FileUtil {
      */
     public static File base64ToFile(Handler handler, String base64, String name, boolean isGetList) {
         File file = null;
-        String dirsName = "com.qiao.voice";
+        String dirsName = "com.qiao.voice/mp3";
         String fileName = dirsName.concat("/").concat(name).concat(".mp3");
         FileOutputStream out = null;
         try {
@@ -43,7 +43,7 @@ public class FileUtil {
             if (file.exists()){
                 handler.sendEmptyMessage(5);
             }else {
-                file.createNewFile();
+                //file.createNewFile();
                 byte[] bytes = Base64.decode(base64, Base64.DEFAULT);// 将字符串转换为byte数组
                 ByteArrayInputStream in = new ByteArrayInputStream(bytes);
                 byte[] buffer = new byte[1024];
@@ -72,7 +72,7 @@ public class FileUtil {
     }
 
     public static File getFileList() throws Exception {
-        String dirName = "com.qiao.voice";
+        String dirName = "com.qiao.voice/mp3";
         File file = new File(Environment.getExternalStorageDirectory(), dirName);
         if (!file.exists())
             file.mkdirs();
